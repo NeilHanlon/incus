@@ -55,10 +55,6 @@ Source202:      %{swaggerui_source_baseurl}/swagger-ui-standalone-preset.js#/swa
 Source203:      %{swaggerui_source_baseurl}/swagger-ui.css#/swagger-ui-%{swaggerui_version}.css
 
 # Patches upstream or proposed upstream
-%if ! 0%{?fedora} && 0%{?rhel} >= 8
-## Fix build for 32-bit arches
-Patch0001:      https://github.com/lxc/incus/commit/f11c0b04f2e90a19e900ca077e21edf02c589db2.patch
-%endif
 
 # Downstream only patches
 ## Allow offline builds
@@ -470,6 +466,16 @@ export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
 * Wed Dec 18 2024 Neal Gompa <ngompa@fedoraproject.org> - 6.8-1
 - Update to 6.8
 - Another fix for incus socket
+
+* Tue Sep 10 2024 Neil Hanlon <neil@rockylinux.org> - 6.5-1
+- update to 6.5
+- drop lxd-to-incus socket patch, available in upstream
+
+* Tue Aug 20 2024 Neil Hanlon <neil@shrug.pw> - 6.4-4
+- patch to use the right socket for lxd-to-incux
+
+* Tue Aug 20 2024 Neil Hanlon <neil@shrug.pw> - 6.4-3
+- rebuild with systemd socket change
 
 * Tue Aug 20 2024 Neil Hanlon <neil@shrug.pw> - 6.4-2
 - rebuild
